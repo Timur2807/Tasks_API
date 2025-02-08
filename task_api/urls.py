@@ -1,0 +1,8 @@
+from django.urls import path
+from .views import UserRegistrationView
+
+app_name = 'task_api'
+
+urlpatterns = [
+    path('register/', UserRegistrationView.as_view(), name='user-registration'),
+]
