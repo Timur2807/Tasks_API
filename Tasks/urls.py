@@ -17,24 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from task_api.views import TaskViewSet, UserViewSet
+
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
 
-router = DefaultRouter()
-router.register(r'tasks', TaskViewSet, basename='task')
-router.register(r'users', UserViewSet, basename='user')
+
 
 urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('api/', include('task_api.urls')),
-    path('api/tasks/', include(router.urls)),
-    path('api/users/', include(router.urls)),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     # подключение схемы документации.
     path('api/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger'),
