@@ -1,4 +1,3 @@
-
 Описание проекта
 Tasks API — это Django-приложение для управления задачами. Оно предоставляет RESTful API для создания, чтения, обновления и удаления задач. Каждая задача содержит следующие поля:
 
@@ -57,6 +56,7 @@ python -m venv venv
 
 Активируйте виртуальное окружение:
 venv\Scripts\activate- если через cmd
+или
 .\venv\Scripts\Activate.ps1 - через psh
 
 Установите зависимости:
@@ -65,7 +65,8 @@ venv\Scripts\activate- если через cmd
 pip install -r requirements.txt
 
 Настройте базу данных:
-Убедитесь, что у вас установлен и запущен PostgreSQL. Затем создайте базу данных и пользователя:
+Убедитесь, что у вас установлен и запущен PostgreSQL. 
+Затем создайте базу данных и пользователя:
 CREATE DATABASE tasks_db;
 CREATE USER timur WITH PASSWORD '123';
 GRANT ALL PRIVILEGES ON DATABASE tasks_db TO timur;
@@ -81,6 +82,7 @@ python manage.py runserver
 
 Доступ к приложению:
 После запуска приложение будет доступно по адресу:
+
 http://localhost:8000/
 или
 http://127.0.0.1:8000/
@@ -92,12 +94,14 @@ docker-compose exec web python manage.py test
 
 Без Docker:
 Убедитесь, что у вас установлен pytest и pytest-django, затем выполните:
+
 pytest
 или 
 python manage.py test
 
 Примеры API-запросов
 Создание задачи:
+
 curl -X POST http://127.0.0.1:8000/api/tasks/ \
      -H "Content-Type: application/json" \
      -d '{
