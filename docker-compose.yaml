@@ -72,6 +72,15 @@ services:
     networks:
       - app-network
 
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"  # Порт для доступа к Grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin  # Устанавливаем пароль для администратора
+    networks:
+      - app-network
+
 volumes:
   postgres_data:
   redis_data:

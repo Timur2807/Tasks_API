@@ -217,7 +217,7 @@ class TaskViewSet(viewsets.ModelViewSet):
             logger.info("Данные получены из кэша")
             return Response(cached_data)
 
-        # Если данных нет в кэше, выполняем запрос к базе данных
+        # Если данных нет в кэше, выполняем запрос к базе данных.
         queryset = self.filter_queryset(self.get_queryset())
         serializer = self.get_serializer(queryset, many=True)
         data = serializer.data

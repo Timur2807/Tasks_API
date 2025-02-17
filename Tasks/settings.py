@@ -109,26 +109,28 @@ db_info = urlparse(DATABASE_URL)
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#         'USER': 'timur',
-#         'PASSWORD': '123',
-#         'NAME': 'tasks_db',
-#     }
-# }
+# БД для запуска в PostgreSQL
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': db_info.path[1:],
-        'USER': db_info.username,
-        'PASSWORD': db_info.password,
-        'HOST': db_info.hostname,   # Хост (в Docker Compose это имя сервиса `db`)
-        'PORT': db_info.port or '5432',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+        'USER': 'timur',
+        'PASSWORD': '123',
+        'NAME': 'tasks_db',
     }
 }
+#БД для запуска в докере
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': db_info.path[1:],
+#         'USER': db_info.username,
+#         'PASSWORD': db_info.password,
+#         'HOST': db_info.hostname,   # Хост (в Docker Compose это имя сервиса `db`)
+#         'PORT': db_info.port or '5432',
+#     }
+# }
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
